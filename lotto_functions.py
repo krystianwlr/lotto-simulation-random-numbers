@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Module which consistf of functions for basic number operations.
+Module which consists of functions for basic number operations.
 1. Drawing a set  of random numbers.
 2. Putting numbers to a coupon.
 """
