@@ -7,17 +7,7 @@ Module which consists of functions for basic number operations.
 """
 
 import random
-
-#def draw_numbers():
-   # """
-   # Function which draws 6 random numbers from 1 to 49
-   # :return: a set of 6 integers
-   # """
-   # line = set()
-   # while len(line) < 6:
-   #     for i in range(6):
-   #         line.add(random.randrange(1,50))
-   # return line
+import pygal
 
 def draw_numbers_imp():
     line = set(random.sample(range(1,50),6))
@@ -26,7 +16,7 @@ def draw_numbers_imp():
 def user_numbers():
     """
     Function which lets a user pick a valid set of 6 numbers
-    :return: a list of 6 integers
+    :return: a set of 6 integers
     """
     coupon = set()
     while len(coupon) < 6:
@@ -79,6 +69,20 @@ def main():
         if key >= 3:
             print("You've correctly picked {:d} numbers {:d} times".format(key, value))
 
+    # create a bar chart
+    print("\nWould you like to create a chart? Type 'y' to confirm")
+    choice = str(input("\nType 'y' to confirm "))
+    if choice == "y":
+        line_chart = pygal.Bar()
+        line_chart.title = "Results of " + str(n) + " lotto draws"
+        line_chart.x_labels = ['1', '2', '3', '4', '5', '6']
+        line_chart.x_title = "Numbers matching the draw"
+        line_chart.y_title = "Frequency of result"
+
+        line_chart.add('', histogram.values())
+        line_chart.render_to_png('chart.png')
+    else:
+        pass
 
 if __name__ == main():
     main()
